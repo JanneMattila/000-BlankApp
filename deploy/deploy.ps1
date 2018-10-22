@@ -25,7 +25,7 @@ else
 	$deploymentName = $env:RELEASE_RELEASENAME
 }
 
-if ((Get-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -ErrorAction SilentlyContinue) -eq $null)
+if ($null -eq (Get-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -ErrorAction SilentlyContinue))
 {
     Write-Warning "Resource group '$ResourceGroupName' doesn't exist and it will be created."
     New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -Verbose
@@ -45,7 +45,7 @@ $result = New-AzureRmResourceGroupDeployment `
 
 $result
 
-if ($result.Outputs.variableName -eq $null)
+if ($null -eq $result.Outputs.variableName)
 {
     Throw "Template deployment didn't return 'output' variables correctly and therefore deployment is cancelled."
 }
