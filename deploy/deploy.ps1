@@ -14,7 +14,7 @@ $deploymentName = "Local-$date"
 if ([string]::IsNullOrEmpty($env:RELEASE_DEFINITIONNAME))
 {
    Write-Host (@"
-Not executing inside VSTS Release Management.
+Not executing inside Azure DevOps Release Management.
 Make sure you have done "Login-AzureRmAccount" and
 "Select-AzureRmSubscription -SubscriptionName name"
 so that script continues to work correctly for you.
